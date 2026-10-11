@@ -1,3 +1,4 @@
+
 name: Build APK
 
 on:
@@ -33,6 +34,11 @@ jobs:
     - name: Accept Android SDK Licenses
       run: |
         yes | sdkmanager --licenses || true
+
+    - name: Install Build Tools Explicitly
+      run: |
+        sdkmanager "build-tools;34.0.0" "platform-tools" "platforms;android-34"
+        # ملاحظة: قمنا بتغيير الإصدار إلى 34.0.0 لأنه أكثر استقراراً من 37.0.0
 
     - name: Build with Buildozer
       run: |
