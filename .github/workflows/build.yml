@@ -34,15 +34,15 @@ jobs:
       run: |
         yes | sdkmanager --licenses || true
 
-    - name: Install Android SDK Build Tools Explicitly
+    - name: Install Build Tools 37 Explicitly
       run: |
-        # تثبيت النسخة 34 بشكل صريح لمنع buildozer من طلب النسخة 37
-        sdkmanager "build-tools;34.0.0" "platform-tools" "platforms;android-34"
+        # تثبيت النسخة 37.0.0 التي يطلبها buildozer مع قبول ترخيصها
+        yes | sdkmanager "build-tools;37.0.0" "platform-tools" "platforms;android-37"
 
     - name: Build with Buildozer
       run: |
-        # إجبار buildozer على استخدام النسخة 34 من build-tools
-        yes | buildozer -v android debug --android-build-tools-version=34.0.0
+        # استخدام الأمر العادي بدون إجبار إصدار معين
+        yes | buildozer -v android debug
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
