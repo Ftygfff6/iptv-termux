@@ -1,4 +1,3 @@
-# This .spec config file tells Buildozer an app's requirements for being built.
 #
 # It largely follows the syntax of an .ini file.
 # See the end of the file for more details and warnings about common mistakes.
@@ -38,11 +37,7 @@ version = 0.1
 
 # (str) Application versioning (method 2)
 # version.regex = __version__ = ['"](.*)['"]
-# version.filename = %(source.dir)s/main.py
-
-# (list) Application requirements
-# comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy
+# version.filename = %(source.dir)s/maiequirements = python3,kivy
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -137,12 +132,7 @@ fullscreen = 0
 # when an update is due and you just want to test/build your package
 # android.skip_update = False
 
-# (bool) If True, then automatically accept SDK license
-# agreements. This is intended for automation only. If set to False,
-# the default, you will be shown the license when first running
-# buildozer.
-# android.accept_sdk_license = False
-
+# (bool) If True, then automatically accept SDK li
 # (str) Android entry point, default is ok for Kivy-based app
 #android.entrypoint = org.kivy.android.PythonActivity
 
@@ -454,23 +444,7 @@ warn_on_root = 1
 #   Warning: Comments cannot be used "inline" - i.e.
 #       [app]
 #       title = My Application # This is not a comment, it is part of the title.
-#
-#   Warning: Indented text is treated as a multiline string - i.e.
-#       [app]
-#       title = My Application
-#          package.name = myapp # This is all part of the title.
-#
-#   Buildozer's .spec files have some additional features:
-#
-#   Buildozer supports lists - i.e.
-#       [app]
-#       source.include_exts = py,png,jpg
-#       #                     ^ This is a list.
-#
-#       [app:source.include_exts]
-#       py
-#       png
-#       jpg
+
 #       # ^ This is an alternative syntax for a list.
 #
 #   Buildozer's option names are case-sensitive, unlike most .ini files.

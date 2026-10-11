@@ -1,4 +1,3 @@
-
 name: Build APK
 
 on:
@@ -25,7 +24,7 @@ jobs:
       with:
         python-version: '3.10'
 
-    - name: Install dependencies
+    - name: Install System Dependencies
       run: |
         sudo apt update
         sudo apt install -y git zip unzip openjdk-17-jdk python3-pip autoconf libtool pkg-config zlib1g-dev libncurses5-dev libncursesw5-dev libtinfo5 cmake libffi-dev libssl-dev
@@ -35,14 +34,15 @@ jobs:
       run: |
         yes | sdkmanager --licenses || true
 
-    - name: Install Build Tools Explicitly
+    - name: Install Android SDK Build Tools Explicitly
       run: |
+        # تثبيت النسخة 34 بشكل صريح لمنع buildozer من طلب النسخة 37
         sdkmanager "build-tools;34.0.0" "platform-tools" "platforms;android-34"
-        # ملاحظة: قمنا بتغيير الإصدار إلى 34.0.0 لأنه أكثر استقراراً من 37.0.0
 
     - name: Build with Buildozer
       run: |
-        yes | buildozer -v android debug
+        # إجبار buildozer على استخدام النسخة 34 من build-tools
+        yes | buildozer -v android debug --android-build-tools-version=34.0.0
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
