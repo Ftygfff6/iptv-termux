@@ -19,12 +19,9 @@ jobs:
           pip install --upgrade pip setuptools wheel
           pip install cython buildozer
       - name: Clean Buildozer cache
-        run: |
-          rm -rf ~/.buildozer
-          buildozer android clean
+        run: rm -rf ~/.buildozer || true
       - name: Build APK
-        run: |
-          buildozer -v android debug
+        run: buildozer -v android debug
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
