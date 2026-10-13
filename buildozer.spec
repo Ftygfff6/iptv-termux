@@ -71,7 +71,7 @@ fullscreen = 0
 #android.add_activities =
 
 # (str) Android NDK version to use
-#android.ndk = 23b
+android.ndk = 23b
 
 # (str) Android SDK version to use
 #android.sdk = 21
