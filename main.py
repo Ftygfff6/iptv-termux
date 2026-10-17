@@ -83,3 +83,20 @@ class TermuxIPTV(App):
 
 if __name__ == "__main__":
     TermuxIPTV().run()
+
+# --- إضافة تلقائية من Termux: دالة دمج الصوت ---
+from audio_mixer import mix_live_audio
+
+def start_mixed_stream(live_url, local_audio):
+    # مسار حفظ الملف الناتج
+    out_path = "/sdcard/Download/mixed_stream.mp4"
+    
+    # استدعاء الدالة
+    success, result = mix_live_audio(live_url, local_audio, out_path)
+    
+    if success:
+        print(f"تم الدمج بنجاح! الملف موجود في: {result}")
+        # هنا يمكنك إضافة كود لتشغيل الملف الناتج في مشغل Kivy
+    else:
+        print(f"فشل الدمج: {result}")
+# -----------------------------------------------------
